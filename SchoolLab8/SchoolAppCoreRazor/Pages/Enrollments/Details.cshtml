@@ -1,0 +1,20 @@
+@page
+@model SchoolAppCoreRazor.Pages.Enrollments.DetailsModel
+@{
+    ViewData["Title"] = "Details Enrollment";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Enrollment.EnrollmentID</dd>
+    <dt class="col-sm-3">Course</dt>
+    <dd class="col-sm-9">@(Model.Enrollment.Course?.Title ?? Model.Enrollment.CourseID.ToString())</dd>
+    <dt class="col-sm-3">Student</dt>
+    <dd class="col-sm-9">@(Model.Enrollment.Student is { } student ? $"{student.FirstName} {student.LastName}" : Model.Enrollment.StudentID.ToString())</dd>
+    <dt class="col-sm-3">Grade</dt>
+    <dd class="col-sm-9">@Model.Enrollment.Grade</dd>
+</dl>
+<a asp-page="./Edit" asp-route-id="@Model.Enrollment.EnrollmentID" class="btn btn-primary">Edit</a>
+<a asp-page="./Index" class="btn btn-link">Back to List</a>

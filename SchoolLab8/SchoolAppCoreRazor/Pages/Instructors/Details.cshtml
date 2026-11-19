@@ -1,0 +1,20 @@
+@page
+@model SchoolAppCoreRazor.Pages.Instructors.DetailsModel
+@{
+    ViewData["Title"] = "Details Instructor";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Instructor.InstructorID</dd>
+    <dt class="col-sm-3">Last Name</dt>
+    <dd class="col-sm-9">@Model.Instructor.LastName</dd>
+    <dt class="col-sm-3">First Name</dt>
+    <dd class="col-sm-9">@Model.Instructor.FirstName</dd>
+    <dt class="col-sm-3">Hire Date</dt>
+    <dd class="col-sm-9">@Model.Instructor.HireDate.ToString("yyyy-MM-dd")</dd>
+</dl>
+<a asp-page="./Edit" asp-route-id="@Model.Instructor.InstructorID" class="btn btn-primary">Edit</a>
+<a asp-page="./Index" class="btn btn-link">Back to List</a>

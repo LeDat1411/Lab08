@@ -1,0 +1,19 @@
+@model Course
+@{
+    ViewData["Title"] = "Details Course";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.CourseID</dd>
+    <dt class="col-sm-3">Title</dt>
+    <dd class="col-sm-9">@Model.Title</dd>
+    <dt class="col-sm-3">Credits</dt>
+    <dd class="col-sm-9">@Model.Credits</dd>
+    <dt class="col-sm-3">Department</dt>
+    <dd class="col-sm-9">@(Model.Department?.DepartmentName ?? Model.DepartmentID.ToString())</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.CourseID" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-link">Back to List</a>

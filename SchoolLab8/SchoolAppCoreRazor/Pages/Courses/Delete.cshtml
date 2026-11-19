@@ -1,0 +1,23 @@
+@page
+@model SchoolAppCoreRazor.Pages.Courses.DeleteModel
+@{
+    ViewData["Title"] = "Delete Course";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Delete this course? Related records will also be deleted.</p>
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Course.CourseID</dd>
+    <dt class="col-sm-3">Title</dt>
+    <dd class="col-sm-9">@Model.Course.Title</dd>
+    <dt class="col-sm-3">Credits</dt>
+    <dd class="col-sm-9">@Model.Course.Credits</dd>
+    <dt class="col-sm-3">Department</dt>
+    <dd class="col-sm-9">@(Model.Course.Department?.DepartmentName ?? Model.Course.DepartmentID.ToString())</dd>
+</dl>
+<form asp-page="./Delete" asp-route-id="@Model.Course.CourseID" method="post">
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a asp-page="./Index" class="btn btn-link">Back to List</a>
+</form>

@@ -1,0 +1,35 @@
+@page
+@model SchoolAppCoreRazor.Pages.Courses.EditModel
+@{
+    ViewData["Title"] = "Edit Course";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-page="./Edit" asp-route-id="@Model.Course.CourseID" method="post" class="col-md-6">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Course.CourseID" />
+    <div class="mb-3">
+        <label asp-for="Course.Title" class="form-label"></label>
+        <input asp-for="Course.Title" class="form-control" />
+        <span asp-validation-for="Course.Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Course.Credits" class="form-label"></label>
+        <input asp-for="Course.Credits" class="form-control" />
+        <span asp-validation-for="Course.Credits" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Course.DepartmentID" class="form-label"></label>
+        <select asp-for="Course.DepartmentID" asp-items='(SelectList?)ViewData["DepartmentIDOptions"]' class="form-select">
+            <option value="">Select a department</option>
+        </select>
+        <span asp-validation-for="Course.DepartmentID" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="./Index" class="btn btn-link">Back to List</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

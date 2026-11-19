@@ -1,0 +1,35 @@
+@model Enrollment
+@{
+    ViewData["Title"] = "Create Enrollment";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Create" method="post" class="col-md-6">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="CourseID" class="form-label"></label>
+        <select asp-for="CourseID" asp-items='(SelectList?)ViewData["CourseIDOptions"]' class="form-select">
+            <option value="">Select a course</option>
+        </select>
+        <span asp-validation-for="CourseID" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="StudentID" class="form-label"></label>
+        <select asp-for="StudentID" asp-items='(SelectList?)ViewData["StudentIDOptions"]' class="form-select">
+            <option value="">Select a student</option>
+        </select>
+        <span asp-validation-for="StudentID" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Grade" class="form-label"></label>
+        <input asp-for="Grade" class="form-control" />
+        <span asp-validation-for="Grade" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-link">Back to List</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

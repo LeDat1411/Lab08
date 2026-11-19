@@ -1,0 +1,22 @@
+@model Instructor
+@{
+    ViewData["Title"] = "Delete Instructor";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Delete this instructor?</p>
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.InstructorID</dd>
+    <dt class="col-sm-3">Last Name</dt>
+    <dd class="col-sm-9">@Model.LastName</dd>
+    <dt class="col-sm-3">First Name</dt>
+    <dd class="col-sm-9">@Model.FirstName</dd>
+    <dt class="col-sm-3">Hire Date</dt>
+    <dd class="col-sm-9">@Model.HireDate.ToString("yyyy-MM-dd")</dd>
+</dl>
+<form asp-action="Delete" asp-route-id="@Model.InstructorID" method="post">
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a asp-action="Index" class="btn btn-link">Back to List</a>
+</form>

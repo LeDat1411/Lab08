@@ -1,0 +1,33 @@
+@page
+@model SchoolAppCoreRazor.Pages.Students.EditModel
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-page="./Edit" asp-route-id="@Model.Student.StudentID" method="post" class="col-md-6">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Student.StudentID" />
+    <div class="mb-3">
+        <label asp-for="Student.LastName" class="form-label"></label>
+        <input asp-for="Student.LastName" class="form-control" />
+        <span asp-validation-for="Student.LastName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Student.FirstName" class="form-label"></label>
+        <input asp-for="Student.FirstName" class="form-control" />
+        <span asp-validation-for="Student.FirstName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Student.EnrollmentDate" class="form-label"></label>
+        <input asp-for="Student.EnrollmentDate" class="form-control" />
+        <span asp-validation-for="Student.EnrollmentDate" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="./Index" class="btn btn-link">Back to List</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

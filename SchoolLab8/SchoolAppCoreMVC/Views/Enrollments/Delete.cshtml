@@ -1,0 +1,22 @@
+@model Enrollment
+@{
+    ViewData["Title"] = "Delete Enrollment";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Delete this enrollment?</p>
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.EnrollmentID</dd>
+    <dt class="col-sm-3">Course</dt>
+    <dd class="col-sm-9">@(Model.Course?.Title ?? Model.CourseID.ToString())</dd>
+    <dt class="col-sm-3">Student</dt>
+    <dd class="col-sm-9">@(Model.Student is { } student ? $"{student.FirstName} {student.LastName}" : Model.StudentID.ToString())</dd>
+    <dt class="col-sm-3">Grade</dt>
+    <dd class="col-sm-9">@Model.Grade</dd>
+</dl>
+<form asp-action="Delete" asp-route-id="@Model.EnrollmentID" method="post">
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a asp-action="Index" class="btn btn-link">Back to List</a>
+</form>
